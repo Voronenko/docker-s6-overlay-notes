@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+s6-echo "Running webhook helper as /usr/local/bin/webhook -ip $WEBHOOK_LISTEN --port $WEBHOOK_PORT -verbose -hooks $WEBHOOK_CONFIGFILE"
+
+exec -c
+/usr/local/bin/webhook -ip ${WEBHOOK_LISTEN:-0.0.0.0} --port ${WEBHOOK_PORT:-9999} -verbose -hooks ${WEBHOOK_CONFIGFILE:-/etc/webhook/hook.json}

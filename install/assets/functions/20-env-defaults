@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+# Colours
+readonly C_NOC="\\033[0m"    # No colour
+readonly C_RED="\\033[0;31m" # Red
+readonly C_GRN="\\033[0;32m" # Green
+readonly C_BLU="\\033[0;34m" # Blue
+readonly C_PUR="\\033[0;35m" # Purple
+readonly C_CYA="\\033[0;36m" # Cyan
+readonly C_WHI="\\033[0;37m" # White
+### Helper functions
+print_red () { local i; for i in "$@"; do s6-echo "${C_RED}${i}${C_NOC}"; done }
+print_grn () { local i; for i in "$@"; do s6-echo "${C_GRN}${i}${C_NOC}"; done }
+print_blu () { local i; for i in "$@"; do s6-echo "${C_BLU}${i}${C_NOC}"; done }
+print_pur () { local i; for i in "$@"; do s6-echo "${C_PUR}${i}${C_NOC}"; done }
+print_cya () { local i; for i in "$@"; do s6-echo "${C_CYA}${i}${C_NOC}"; done }
+print_whi () { local i; for i in "$@"; do s6-echo "${C_WHI}${i}${C_NOC}"; done }
+
+### Sets global Defaults from container environment by specifiing /usr/bin/with-contenv
+### shared by initialization scripts
+#SOME_DEFAULT_PARAM=${SOME_DEFAULT_PARAM:-"defaultvalue"}

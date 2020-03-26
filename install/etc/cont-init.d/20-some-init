@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+
+for s in /assets/functions/*; do source $s; done
+
+# someactions where you can use
+

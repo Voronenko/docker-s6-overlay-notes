@@ -1,0 +1,70 @@
+[
+  {
+    "id": "script",
+    "execute-command": "/etc/webhook/script.sh",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "include-command-output-in-response-on-error": true,
+    "response-message": "Executing script",
+    "pass-environment-to-command": [
+      {
+        "source": "payload",
+        "name": "api_key",
+        "envname": "HOOK_API_KEY"
+      },
+      {
+        "source": "entire-payload",
+        "envname": "HOOK_ENTIRE_PAYLOAD"
+      }
+    ],
+    "pass-arguments-to-command":
+    [
+    ]
+  },
+  {
+    "id": "dateheader",
+    "execute-command": "date",
+    "command-working-directory": "/tmp",
+    "include-command-output-in-response": true,
+    "include-command-output-in-response-on-error": true,
+    "response-message": "Executing dateip script",
+    "pass-arguments-to-command":
+    [
+    ],
+    "trigger-rule":
+    {
+      "match":
+      {
+        "type": "value",
+        "value": "SOMETOKEN",
+        "parameter":
+        {
+          "source": "header",
+          "name": "X-Cypress-Token"
+        }
+      }
+    }
+  },
+  {
+    "id": "dateget",
+    "execute-command": "date",
+    "response-message": "Executing simple webhook...",
+    "include-command-output-in-response": true,
+    "include-command-output-in-response-on-error": true,
+    "trigger-rule":
+    {
+      "match":
+      {
+        "type": "value",
+        "value": "42",
+        "parameter":
+        {
+          "source": "url",
+          "name": "token"
+        }
+      }
+    }
+  }
+
+
+]
